@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-jakarta), "Inter", system-ui, sans-serif;
+  --font-display: var(--font-space), "Outfit", system-ui, sans-serif;
+  
+  --color-background: #050505;
+  --color-foreground: #fafafa;
+  --color-accent: #8b5cf6;
+  --color-accent-hover: #7c3aed;
+  --color-card-bg: rgba(255, 255, 255, 0.03);
+  --color-card-border: rgba(255, 255, 255, 0.08);
+  --radius-xl: 1rem;
+}
+
+@layer base {
+  html, body {
+    @apply bg-background text-foreground font-sans antialiased overflow-x-hidden;
+    scroll-behavior: smooth;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight;
+  }
+}
+
+@layer components {
+  .container {
+    @apply w-full max-w-[1200px] mx-auto px-8;
+  }
+
+  .glass {
+    @apply bg-card-bg backdrop-blur-md border border-card-border rounded-[0.75rem];
+  }
+
+  .btn-primary {
+    @apply bg-accent text-white px-6 py-3 rounded-full font-medium transition-all duration-200 inline-flex items-center justify-center gap-2 border-none cursor-pointer;
+  }
+
+  .btn-primary:hover {
+    @apply bg-accent-hover -translate-y-0.5 shadow-[0_4px_14px_rgba(59,130,246,0.4)];
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-foreground px-6 py-3 rounded-full font-medium transition-all duration-200 inline-flex items-center justify-center gap-2 border border-card-border cursor-pointer;
+  }
+
+  .btn-secondary:hover {
+    @apply bg-card-bg border-[rgba(255,255,255,0.2)];
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold mb-4;
+  }
+
+  .section-label {
+    @apply uppercase tracking-widest text-sm text-accent font-semibold block mb-2;
+  }
+
+  .section-intro {
+    @apply text-lg text-white/70 max-w-[600px] mb-12 leading-relaxed;
+  }
+}
+

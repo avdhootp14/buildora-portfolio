@@ -1,0 +1,73 @@
+.section {
+  padding: 8rem 0;
+  background: rgba(255, 255, 255, 0.01);
+  border-top: 1px solid var(--card-border);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.tcard {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tstars {
+  color: #fbbf24;
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.1em;
+}
+
+.tquote {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.tauthor {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+}
+
+.tavatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: white;
+}
+
+.tname {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.trole {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
