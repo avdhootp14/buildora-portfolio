@@ -66,7 +66,7 @@ export const Footer = () => {
             &copy; {new Date().getFullYear()} Weblinq Agency. All rights reserved.
           </p>
           <p className="text-muted text-xs">
-            Based in New York, working globally.
+            Based in Pune, India, working globally.
           </p>
         </div>
       </div>
