@@ -218,7 +218,7 @@ export default function TeamPage() {
             ) : (
               <div className="divide-y divide-white/5">
                 {admins.map((admin) => (
-                  <div key={admin._id} className="p-6 flex items-center justify-between hover:bg-white/[0.02] transition-colors group">
+                  <div key={admin._id} className="p-6 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between hover:bg-white/[0.02] transition-colors group">
                     <div className="flex items-center gap-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-800 to-gray-900 border border-white/10 flex items-center justify-center text-lg font-bold text-white shadow-inner">
                         {(admin.email || admin.username || '?').charAt(0).toUpperCase()}
@@ -250,7 +250,7 @@ export default function TeamPage() {
                     </div>
                     
                     {currentUser?.role === 'owner' && admin._id !== currentUser._id && (
-                      <div className="flex items-center gap-3 transition-all">
+                      <div className="flex items-center gap-3 transition-all self-end md:self-auto">
                         {admin.role === 'admin' ? (
                           <button 
                             onClick={() => handleChangeRole(admin._id, 'owner')}

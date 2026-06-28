@@ -91,8 +91,9 @@ export default function AdminMeetings() {
         </div>
       ) : (
         <div className="bg-white/[0.02] border border-white/10 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-xl">
-          <table className="w-full text-left">
-            <thead className="bg-white/5 border-b border-white/10 text-gray-400 uppercase text-xs tracking-wider">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead className="bg-white/5 border-b border-white/10 text-gray-400 uppercase text-xs tracking-wider">
               <tr>
                 <th className="px-6 py-5 font-semibold">Scheduled For</th>
                 <th className="px-6 py-5 font-semibold">Client Info</th>
@@ -148,6 +149,7 @@ export default function AdminMeetings() {
               ))}
             </tbody>
           </table>
+          </div>
         </div>
       )}
     </div>
