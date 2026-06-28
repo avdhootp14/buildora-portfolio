@@ -1,6 +1,7 @@
 "use client";
 
-import { Quote, Instagram } from "lucide-react";
+import { Quote } from "lucide-react";
+import { FaInstagram } from "react-icons/fa";
 import { Reveal } from "./animations/Reveal";
 import { motion } from "framer-motion";
 
@@ -49,7 +50,7 @@ export const Testimonials = () => {
                   <div>
                     <h4 className="text-white font-bold font-display text-lg">{testimonial.author}</h4>
                     <p className="text-[#a855f7] text-sm font-sans flex items-center gap-1.5 mt-0.5">
-                      <Instagram size={14} />
+                      <FaInstagram size={14} />
                       {testimonial.role}
                     </p>
                   </div>

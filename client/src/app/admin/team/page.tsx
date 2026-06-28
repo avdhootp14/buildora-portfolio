@@ -16,9 +16,7 @@ export default function TeamPage() {
   const [inviteError, setInviteError] = useState('');
   const router = useRouter();
 
-  useEffect(() => {
-    fetchAdmins();
-  }, []);
+
 
   const fetchAdmins = async () => {
     try {
@@ -50,6 +48,11 @@ export default function TeamPage() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchAdmins();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleInvite = async (e: React.FormEvent) => {
     e.preventDefault();
