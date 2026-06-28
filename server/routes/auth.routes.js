@@ -51,7 +51,8 @@ router.post('/invite', auth, authLimiter, async (req, res) => {
     await user.save();
 
     // Send Invitation Email
-    const setupUrl = `http://localhost:3000/admin/setup-account/${verificationToken}`;
+    const frontendUrl = process.env.FRONTEND_URL || req.headers.origin || 'http://localhost:3000';
+    const setupUrl = `${frontendUrl}/admin/setup-account/${verificationToken}`;
     const message = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f9f9f9; padding: 40px 20px; border-radius: 8px;">
         <div style="background-color: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">
@@ -147,7 +148,8 @@ router.post('/forgot-password', authLimiter, async (req, res) => {
     user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
     await user.save();
 
-    const resetUrl = `http://localhost:3000/admin/reset-password/${resetToken}`;
+    const frontendUrl = process.env.FRONTEND_URL || req.headers.origin || 'http://localhost:3000';
+    const resetUrl = `${frontendUrl}/admin/reset-password/${resetToken}`;
     const message = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #f9f9f9; padding: 40px 20px; border-radius: 8px;">
         <div style="background-color: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;">

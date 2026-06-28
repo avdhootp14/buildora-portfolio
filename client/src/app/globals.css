@@ -6,6 +6,8 @@
   --color-muted: #a3a3a3;
   --color-card-bg: #121212;
   --color-card-border: #222222;
+  --color-accent: #a855f7;
+  --color-accent-hover: #d946ef;
 
   --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
   --font-display: var(--font-playfair), "Playfair Display", serif;
