@@ -34,7 +34,7 @@ export const Footer = () => {
             <h4 className="text-muted font-bold mb-6 uppercase tracking-wider text-sm">Socials & Legal</h4>
             <ul className="space-y-4">
               <li><a href="#" className="text-foreground/70 hover:text-foreground transition-colors text-lg">LinkedIn</a></li>
-              <li><a href="#" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Instagram</a></li>
+              <li><a href="https://www.instagram.com/weblinq_4/" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Instagram</a></li>
               <li><a href="/privacy-policy" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Privacy Policy</a></li>
               <li><a href="/terms-of-service" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Terms of Service</a></li>
             </ul>

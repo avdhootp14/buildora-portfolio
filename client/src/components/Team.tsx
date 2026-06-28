@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const teamMembers = [
   {
-    name: "Atharva",
+    name: "Atharv",
     role: "Strategy & Growth Lead",
     image: "/atharv.png"
   },
