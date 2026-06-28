@@ -1,19 +1,26 @@
 "use client";
+import { API_URL } from '@/utils/api';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import { Eye, EyeOff } from 'lucide-react';
 
 export default function AdminLogin() {
-  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+    setError('');
     try {
-      const res = await fetch('http://localhost:5000/api/auth/login', {
+      const res = await fetch(API_URL + '/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ email, password })
       });
       
       const data = await res.json();
@@ -27,6 +34,8 @@ export default function AdminLogin() {
     } catch (err) {
       console.error('Login error:', err);
       setError('An error occurred. Make sure the backend server is running.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -46,33 +55,50 @@ export default function AdminLogin() {
 
         <form onSubmit={handleLogin} className="space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-1">Username</label>
+            <label className="block text-sm font-medium text-gray-400 mb-1">Email Address</label>
             <input 
               required
-              type="text" 
+              type="email" 
               className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-400 mb-1">Password</label>
-            <input 
-              required
-              type="password" 
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className="flex justify-between items-center mb-1">
+              <label className="block text-sm font-medium text-gray-400">Password</label>
+              <Link href="/admin/forgot-password" className="text-sm text-accent hover:text-accent-hover transition-colors">
+                Forgot Password?
+              </Link>
+            </div>
+            <div className="relative">
+              <input 
+                required
+                type={showPassword ? "text" : "password"} 
+                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors pr-12"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition-colors p-1"
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
           </div>
           <button 
             type="submit" 
-            className="w-full bg-accent hover:bg-accent-hover text-white font-medium py-3 rounded-lg transition-colors mt-4"
+            disabled={loading}
+            className="w-full bg-accent hover:bg-accent-hover text-white font-medium py-3 rounded-lg transition-colors mt-4 disabled:opacity-70"
           >
-            Sign In
+            {loading ? "Signing in..." : "Sign In"}
           </button>
         </form>
+
       </div>
     </div>
   );
 }
+

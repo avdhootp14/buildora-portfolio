@@ -3,8 +3,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: 'Cookie Policy - Buildora',
-  description: 'Cookie Policy for Buildora Agency',
+  title: 'Cookie Policy - Weblinq',
+  description: 'Cookie Policy for Weblinq Agency',
 };
 
 export default function CookiePolicy() {

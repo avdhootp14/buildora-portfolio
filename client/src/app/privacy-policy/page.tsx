@@ -3,8 +3,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy - Buildora',
-  description: 'Privacy Policy for Buildora Agency',
+  title: 'Privacy Policy - Weblinq',
+  description: 'Privacy Policy for Weblinq Agency',
 };
 
 export default function PrivacyPolicy() {
@@ -54,7 +54,7 @@ export default function PrivacyPolicy() {
           <section>
             <h2 className="text-2xl font-display font-semibold text-white mb-4">5. Contact Us</h2>
             <p className="leading-relaxed">
-              If you have any questions about this Privacy Policy, please contact us at <a href="mailto:hello@buildora.agency" className="text-[#8b5cf6] hover:underline">hello@buildora.agency</a>.
+              If you have any questions about this Privacy Policy, please contact us at <a href="mailto:hello@weblinq.agency" className="text-[#8b5cf6] hover:underline">hello@weblinq.agency</a>.
             </p>
           </section>
         </div>

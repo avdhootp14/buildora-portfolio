@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { Reveal } from "./animations/Reveal";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
@@ -28,37 +27,56 @@ export const FAQ = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-32 bg-[#111] border-y border-[#222]">
-      <div className="container relative z-10 px-6 mx-auto">
-        <div className="text-center mb-20">
-          <Reveal>
-            <span className="text-xs uppercase tracking-[0.2em] font-semibold text-white/50 mb-4 block">
-              Common Questions
-            </span>
-            <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight">
-              What to Expect.
-            </h2>
-          </Reveal>
-        </div>
+    <section id="faq" className="relative py-32 bg-[#050505] border-t border-[#222] overflow-hidden">
+      {/* Violet Background Glow */}
+      <div className="absolute bottom-0 right-0 w-full max-w-3xl h-[500px] bg-gradient-to-r from-[#a855f7]/15 to-[#d946ef]/15 blur-[150px] pointer-events-none" />
+      <div className="container relative z-10 px-6 md:px-12 mx-auto">
+        <div className="flex flex-col md:flex-row gap-16 md:gap-24">
+          
+          <div className="md:w-1/3">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-[1.1] mb-6"
+            >
+              Common <br />
+              <span className="italic text-muted">Questions.</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-foreground/60"
+            >
+              Everything you need to know about how we work, pricing, and our process.
+            </motion.p>
+          </div>
 
-        <div className="max-w-3xl mx-auto space-y-4">
-          {faqs.map((faq, index) => {
-            const isOpen = openIndex === index;
-            
-            return (
-              <Reveal key={index} delay={index * 0.1} direction="up">
+          <div className="md:w-2/3 border-t border-[#222]">
+            {faqs.map((faq, index) => {
+              const isOpen = openIndex === index;
+              return (
                 <motion.div 
-                  className={`border ${isOpen ? 'border-white/20 bg-[#1a1a1a]' : 'border-[#222] bg-[#0a0a0a] hover:border-white/10'} rounded-2xl overflow-hidden transition-colors duration-300`}
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="border-b border-[#222]"
                 >
                   <button 
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full text-left px-8 py-6 flex items-center justify-between focus:outline-none"
+                    className="w-full text-left py-8 flex items-center justify-between focus:outline-none group"
+                    suppressHydrationWarning
                   >
-                    <span className="font-display font-semibold text-lg text-white pr-8">
+                    <span className="font-display font-semibold text-xl md:text-2xl text-foreground pr-8 group-hover:text-[#c084fc] transition-colors duration-300">
                       {faq.question}
                     </span>
-                    <span className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-colors duration-300 ${isOpen ? 'border-white text-white bg-white/5' : 'border-[#333] text-white/40'}`}>
-                      {isOpen ? <Minus size={14} /> : <Plus size={14} />}
+                    <span className={`flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 text-[#c084fc]' : 'text-foreground/50'} group-hover:text-[#c084fc]`}>
+                      {isOpen ? <Minus size={20} strokeWidth={2} /> : <Plus size={20} strokeWidth={2} />}
                     </span>
                   </button>
 
@@ -69,17 +87,19 @@ export const FAQ = () => {
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
                       >
-                        <div className="px-8 pb-6 text-white/60 font-sans leading-relaxed">
+                        <div className="pb-8 text-foreground/60 font-sans leading-relaxed max-w-2xl">
                           {faq.answer}
                         </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </motion.div>
-              </Reveal>
-            );
-          })}
+              );
+            })}
+          </div>
+
         </div>
       </div>
     </section>

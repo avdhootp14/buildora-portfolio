@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { FaFacebookF, FaInstagram, FaDribbble, FaBehance } from "react-icons/fa";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,44 +21,48 @@ export const Navbar = () => {
       <motion.nav 
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? "bg-[#050505]/80 backdrop-blur-xl border-b border-white/5 py-4" : "bg-transparent py-6"}`}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${scrolled ? "bg-background/80 backdrop-blur-xl border-b border-white/5 py-4" : "bg-transparent py-8"}`}
       >
-        <div className="container">
+        <div className="container px-6 md:px-12 mx-auto">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-                <div className="w-3 h-3 bg-black rounded-sm" />
-              </div>
-              <span className="text-xl font-display tracking-tight text-white font-medium">Buildora</span>
+            {/* Left Logo */}
+            <Link href="/" className="text-2xl font-display font-bold tracking-tight text-foreground flex items-center gap-2 group">
+              <span className="italic font-medium">Weblinq</span>
             </Link>
             
-            {/* Desktop Links (Centered) */}
-            <ul className="hidden md:flex items-center space-x-10">
-              <li><Link href="#home" className="text-sm font-medium text-white/60 hover:text-accent transition-colors">Home</Link></li>
-              <li><Link href="#services" className="text-sm font-medium text-white/60 hover:text-accent transition-colors">Services</Link></li>
-              <li><Link href="#work" className="text-sm font-medium text-white/60 hover:text-accent transition-colors">Process</Link></li>
-              <li><Link href="#faqs" className="text-sm font-medium text-white/60 hover:text-accent transition-colors">FAQs</Link></li>
-              <li><Link href="#support" className="text-sm font-medium text-white/60 hover:text-accent transition-colors">Support</Link></li>
-            </ul>
+            {/* Center Pill Nav */}
+            <div className="hidden md:flex items-center bg-[#111]/80 backdrop-blur-lg border border-white/5 rounded-full px-8 py-3 space-x-10 shadow-2xl">
+              <Link href="/#services" className="text-sm font-medium text-foreground/60 hover:text-foreground transition-colors duration-300">Services</Link>
+              <Link href="/about" className="text-sm font-medium text-foreground/60 hover:text-foreground transition-colors duration-300">About Us</Link>
+              <Link href="/#work" className="text-sm font-medium text-foreground/60 hover:text-foreground transition-colors duration-300">Projects</Link>
+              <Link href="/#faq" className="text-sm font-medium text-foreground/60 hover:text-foreground transition-colors duration-300">FAQ</Link>
+              <Link href="/#contact" className="text-sm font-medium text-foreground/60 hover:text-foreground transition-colors duration-300">Contact</Link>
+            </div>
 
-            {/* CTA */}
-            <div className="hidden md:block">
-              <Link href="#contact" className="relative inline-flex h-10 overflow-hidden rounded-full p-[1px] focus:outline-none">
-                <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#000_0%,#8b5cf6_50%,#000_100%)]" />
-                <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-accent/20 px-6 py-1 text-sm font-medium text-white backdrop-blur-3xl transition-all hover:bg-accent hover:text-white hover:shadow-[0_0_20px_rgba(139,92,246,0.5)]">
-                  Let&apos;s talk
-                </span>
+            {/* Right CTA */}
+            <div className="hidden md:flex items-center">
+              <Link href="/#contact" className="group relative bg-white text-black px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 transition-colors shadow-lg overflow-hidden">
+                <div className="absolute inset-0 bg-gray-200 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out rounded-full" />
+                <div className="relative flex flex-col h-5 overflow-hidden">
+                  <div className="flex flex-col transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:-translate-y-5">
+                    <span className="flex items-center gap-2 h-5 leading-none">
+                      Let's Chat! <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                    <span className="flex items-center gap-2 h-5 leading-none">
+                      Let's Chat! <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </div>
+                </div>
               </Link>
             </div>
 
             <button 
-              className="md:hidden text-white" 
+              className="md:hidden text-foreground bg-white/5 p-2 rounded-full border border-white/10" 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
-              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+              {mobileMenuOpen ? <X size={20} strokeWidth={2} /> : <Menu size={20} strokeWidth={2} />}
             </button>
           </div>
         </div>
@@ -66,18 +71,17 @@ export const Navbar = () => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div 
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-x-0 top-[72px] p-4 bg-[#050505]/95 backdrop-blur-xl border-b border-white/10 z-40 flex flex-col space-y-4 shadow-xl"
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed inset-x-0 top-[70px] p-6 bg-background/95 backdrop-blur-2xl border-b border-white/5 z-40 flex flex-col space-y-6"
           >
-            <Link href="#home" className="text-lg font-medium text-gray-300 p-2" onClick={() => setMobileMenuOpen(false)}>Home</Link>
-            <Link href="#services" className="text-lg font-medium text-gray-300 p-2" onClick={() => setMobileMenuOpen(false)}>Services</Link>
-            <Link href="#work" className="text-lg font-medium text-gray-300 p-2" onClick={() => setMobileMenuOpen(false)}>Process</Link>
-            <Link href="#contact" className="bg-accent text-white text-center p-3 rounded-full font-medium mt-4" onClick={() => setMobileMenuOpen(false)}>
-              Let&apos;s talk
-            </Link>
+            <Link href="/#services" className="text-2xl font-display text-foreground" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+            <Link href="/about" className="text-2xl font-display text-foreground" onClick={() => setMobileMenuOpen(false)}>About</Link>
+            <Link href="/#work" className="text-2xl font-display text-foreground" onClick={() => setMobileMenuOpen(false)}>Projects</Link>
+            <Link href="/#faq" className="text-2xl font-display text-foreground" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
+            <Link href="/#contact" className="text-2xl font-display text-foreground opacity-50" onClick={() => setMobileMenuOpen(false)}>Let's Chat</Link>
           </motion.div>
         )}
       </AnimatePresence>

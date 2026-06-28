@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://buildora.agency';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://weblinq.agency';
 
   return [
     {

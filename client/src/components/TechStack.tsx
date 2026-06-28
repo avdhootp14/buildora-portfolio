@@ -33,7 +33,7 @@ const duplicatedTech = [...technologies, ...technologies, ...technologies];
 export const TechStack = () => {
   return (
     <section className="py-20 bg-[#0a0a0a] border-y border-[#1a1a1a] overflow-hidden relative">
-      <div className="container relative z-10 text-center mb-10">
+      <div className="container relative z-10 px-6 mx-auto text-center mb-10">
         <span className="text-xs uppercase tracking-[0.2em] font-semibold text-white/40">
           Powered By Modern Technologies
         </span>
