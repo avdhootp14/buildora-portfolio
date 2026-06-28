@@ -31,7 +31,7 @@ app.use('/api/projects', require('./routes/project.routes'));
 app.use('/api/contacts', require('./routes/contact.routes'));
 app.use('/api/meetings', require('./routes/meeting.routes'));
 app.use('/api/team', require('./routes/team.routes'));
-
+app.use('/api/reviews', require('./routes/review.routes'));
 // Basic route
 app.get('/api', (req, res) => {
   res.json({ message: 'Welcome to Weblinq Portfolio API' });

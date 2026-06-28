@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, FolderKanban, MessageSquare, Calendar, LogOut, Users, Menu, X } from 'lucide-react';
+import { LayoutDashboard, FolderKanban, MessageSquare, Calendar, LogOut, Users, Menu, X, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function AdminLayout({
@@ -77,6 +77,14 @@ export default function AdminLayout({
         >
           <Users size={20} className={pathname.startsWith('/admin/team') ? 'text-accent' : ''} />
           <span className="font-medium">Team</span>
+        </Link>
+        <Link 
+          href="/admin/reviews" 
+          onClick={() => setMobileMenuOpen(false)}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${pathname.startsWith('/admin/reviews') ? 'bg-gradient-to-r from-accent/20 to-transparent border-l-4 border-accent text-white shadow-lg shadow-accent/10' : 'hover:bg-white/5 text-gray-400 hover:text-gray-200'}`}
+        >
+          <Star size={20} className={pathname.startsWith('/admin/reviews') ? 'text-accent' : ''} />
+          <span className="font-medium">Reviews</span>
         </Link>
       </nav>
       <div className="p-6 border-t border-white/10">
