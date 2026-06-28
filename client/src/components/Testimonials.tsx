@@ -1,15 +1,14 @@
 "use client";
 
-import { Quote } from "lucide-react";
+import { Quote, Instagram } from "lucide-react";
 import { Reveal } from "./animations/Reveal";
 import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    quote: "Thank you so much team Buildora! 🙌 You guys did an incredible job bringing our vision to life. The site looks amazing and so premium! Highly recommend these talented folks. ✨🍰",
+    quote: "Thank you so much team Weblinq! 🙌 You guys did an incredible job bringing our vision to life. The site looks amazing and so premium! Highly recommend these talented folks. ✨🍰",
     author: "Oya Kekars",
     role: "@oyakekars_3jewels",
-    image: "/avdhoot.png" // using one of the team images as a placeholder, or we can use a generic one if preferred. Actually, let's just omit the image or use a standard one.
   }
 ];
 
@@ -49,7 +48,15 @@ export const Testimonials = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold font-display text-lg">{testimonial.author}</h4>
-                    <p className="text-[#a855f7] text-sm font-sans">{testimonial.role}</p>
+                    <a 
+                      href={`https://instagram.com/${testimonial.role.replace('@', '')}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#a855f7] text-sm font-sans flex items-center gap-1.5 hover:text-[#d946ef] transition-colors mt-0.5"
+                    >
+                      <Instagram size={14} />
+                      {testimonial.role}
+                    </a>
                   </div>
                 </div>
               </motion.div>
