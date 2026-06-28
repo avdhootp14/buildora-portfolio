@@ -7,9 +7,9 @@ export const Footer = () => {
   return (
     <footer className="bg-background pt-32 pb-8 border-t border-card-border overflow-hidden" id="contact">
       <div className="container px-6 md:px-12 mx-auto">
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-24">
-          
+
           <div className="lg:col-span-2">
             <h3 className="text-4xl md:text-5xl font-display font-semibold text-foreground mb-6 leading-tight">
               Let's create something <br />
@@ -42,7 +42,7 @@ export const Footer = () => {
         </div>
 
         {/* Massive Brand Name (Interactive Outline to Gradient Fill) */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
