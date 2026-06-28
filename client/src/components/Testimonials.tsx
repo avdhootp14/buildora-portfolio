@@ -33,7 +33,8 @@ export const Testimonials = () => {
         if (res.ok) {
           const data = await res.json();
           if (data && data.length > 0) {
-            setReviews(data);
+            // Prepend defaultReview (Oya Kekars) so it always shows up first, followed by the new ones.
+            setReviews([defaultReview, ...data]);
           }
         }
       } catch (error) {
