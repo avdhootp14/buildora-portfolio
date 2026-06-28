@@ -43,14 +43,14 @@ const ProjectCard = ({
   const opacity = useTransform(progress, range, [1, 0.5]);
 
   return (
-    <div ref={containerRef} className="h-screen flex items-center justify-center sticky top-0">
+    <div ref={containerRef} className="h-[60vh] md:h-screen flex items-center justify-center md:sticky top-0 mb-8 md:mb-0 px-4 md:px-0">
       <motion.div 
         style={{ 
           scale, 
           opacity, 
           top: `calc(-5vh + ${index * 25}px)` // Creates a layered stack effect
         }}
-        className="relative w-full max-w-7xl h-[85vh] mx-auto rounded-[3rem] overflow-hidden transform-origin-top shadow-2xl bg-[#0a0a0a] border border-white/10"
+        className="relative w-full max-w-7xl h-full md:h-[85vh] mx-auto rounded-[2rem] md:rounded-[3rem] overflow-hidden transform-origin-top shadow-2xl bg-[#0a0a0a] border border-white/10"
       >
         {/* Background Image with Parallax */}
         <motion.div 
@@ -166,7 +166,7 @@ export const Work = () => {
           <div className="w-8 h-8 border-2 border-foreground/20 border-t-foreground rounded-full animate-spin"></div>
         </div>
       ) : (
-        <div className="relative mt-8" style={{ paddingBottom: '10vh' }}>
+        <div className="relative mt-8 md:pb-[10vh]">
           {projects.map((project, index) => {
             // Calculate scale parameters for the sticky effect
             const targetScale = 1 - ((projects.length - index) * 0.03); // Next cards compress the previous ones
