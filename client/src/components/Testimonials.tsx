@@ -39,7 +39,7 @@ export const Testimonials = () => {
                 <Quote size={40} className="text-[#a855f7]/30 absolute top-8 right-8 group-hover:text-[#a855f7]/80 transition-colors duration-500" />
                 
                 <p className="text-white/70 font-serif italic text-xl leading-relaxed mb-8 flex-grow relative z-10">
-                  "{testimonial.quote}"
+                  &quot;{testimonial.quote}&quot;
                 </p>
                 
                 <div className="flex items-center gap-4 mt-auto">
@@ -48,15 +48,10 @@ export const Testimonials = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-bold font-display text-lg">{testimonial.author}</h4>
-                    <a 
-                      href={`https://instagram.com/${testimonial.role.replace('@', '')}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-[#a855f7] text-sm font-sans flex items-center gap-1.5 hover:text-[#d946ef] transition-colors mt-0.5"
-                    >
+                    <p className="text-[#a855f7] text-sm font-sans flex items-center gap-1.5 mt-0.5">
                       <Instagram size={14} />
                       {testimonial.role}
-                    </a>
+                    </p>
                   </div>
                 </div>
               </motion.div>

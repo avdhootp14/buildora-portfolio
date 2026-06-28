@@ -91,7 +91,7 @@ export const Contact = () => {
                 </motion.span>
               </h2>
               <p className="text-lg text-white/50 font-sans leading-relaxed mb-12 max-w-md">
-                Have a project in mind? Fill out the form or schedule a discovery call instantly. We'll discuss your goals and how we can help.
+                Have a project in mind? Fill out the form or schedule a discovery call instantly. We&apos;ll discuss your goals and how we can help.
               </p>
               
               <div className="flex flex-col gap-8">
@@ -101,7 +101,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-white font-semibold text-lg group-hover:text-[#c084fc] transition-colors">Discovery Call</h4>
-                    <p className="text-white/40 text-sm mt-1">We'll discuss your goals and requirements.</p>
+                    <p className="text-white/40 text-sm mt-1">We&apos;ll discuss your goals and requirements.</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-6 group cursor-pointer">
@@ -165,7 +165,7 @@ export const Contact = () => {
                     <CheckCircle2 size={48} className="text-green-400" />
                   </div>
                   <h3 className="text-3xl font-display font-semibold text-white mb-3">Message Sent!</h3>
-                  <p className="text-white/50 text-lg">We'll be in touch with you shortly.</p>
+                  <p className="text-white/50 text-lg">We&apos;ll be in touch with you shortly.</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="relative z-10 flex flex-col gap-6 min-h-[440px] animate-in fade-in slide-in-from-left-4 duration-500">

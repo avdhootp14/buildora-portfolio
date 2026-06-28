@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaFacebookF, FaInstagram, FaDribbble, FaBehance } from "react-icons/fa";
 
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -47,10 +46,10 @@ export const Navbar = () => {
                 <div className="relative flex flex-col h-5 overflow-hidden">
                   <div className="flex flex-col transition-transform duration-500 ease-[0.22,1,0.36,1] group-hover:-translate-y-5">
                     <span className="flex items-center gap-2 h-5 leading-none">
-                      Let's Chat! <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      Let&apos;s Chat! <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </span>
                     <span className="flex items-center gap-2 h-5 leading-none">
-                      Let's Chat! <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                      Let&apos;s Chat! <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                     </span>
                   </div>
                 </div>
@@ -81,7 +80,7 @@ export const Navbar = () => {
             <Link href="/about" className="text-2xl font-display text-foreground" onClick={() => setMobileMenuOpen(false)}>About</Link>
             <Link href="/#work" className="text-2xl font-display text-foreground" onClick={() => setMobileMenuOpen(false)}>Projects</Link>
             <Link href="/#faq" className="text-2xl font-display text-foreground" onClick={() => setMobileMenuOpen(false)}>FAQ</Link>
-            <Link href="/#contact" className="text-2xl font-display text-foreground opacity-50" onClick={() => setMobileMenuOpen(false)}>Let's Chat</Link>
+            <Link href="/#contact" className="text-2xl font-display text-foreground opacity-50" onClick={() => setMobileMenuOpen(false)}>Let&apos;s Chat</Link>
           </motion.div>
         )}
       </AnimatePresence>

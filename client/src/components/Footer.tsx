@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -12,7 +13,7 @@ export const Footer = () => {
 
           <div className="lg:col-span-2">
             <h3 className="text-4xl md:text-5xl font-display font-semibold text-foreground mb-6 leading-tight">
-              Let's create something <br />
+              Let&apos;s create something <br />
               <span className="italic text-muted">extraordinary.</span>
             </h3>
             <a href="mailto:hello@weblinq.agency" className="inline-flex items-center gap-3 text-xl md:text-2xl text-foreground hover:text-muted transition-colors border-b-2 border-foreground pb-2 font-medium">
@@ -23,10 +24,10 @@ export const Footer = () => {
           <div>
             <h4 className="text-muted font-bold mb-6 uppercase tracking-wider text-sm">Navigation</h4>
             <ul className="space-y-4">
-              <li><a href="/#services" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Services</a></li>
-              <li><a href="/#work" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Case Studies</a></li>
-              <li><a href="/about" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Our Team</a></li>
-              <li><a href="/#faq" className="text-foreground/70 hover:text-foreground transition-colors text-lg">FAQ</a></li>
+              <li><Link href="/#services" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Services</Link></li>
+              <li><Link href="/#work" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Case Studies</Link></li>
+              <li><Link href="/about" className="text-foreground/70 hover:text-foreground transition-colors text-lg">Our Team</Link></li>
+              <li><Link href="/#faq" className="text-foreground/70 hover:text-foreground transition-colors text-lg">FAQ</Link></li>
             </ul>
           </div>
 
