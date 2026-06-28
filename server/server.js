@@ -37,6 +37,11 @@ app.get('/api', (req, res) => {
   res.json({ message: 'Welcome to Weblinq Portfolio API' });
 });
 
+// Root route so Render domain doesn't show "Cannot GET /"
+app.get('/', (req, res) => {
+  res.json({ message: 'Weblinq Backend API is running successfully!' });
+});
+
 // Stats route for Admin Dashboard
 app.get('/api/stats', require('./middleware/auth'), async (req, res) => {
   try {
