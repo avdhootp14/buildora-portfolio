@@ -43,60 +43,100 @@ const ProjectCard = ({
   const opacity = useTransform(progress, range, [1, 0.5]);
 
   return (
-    <div ref={containerRef} className="h-[60vh] md:h-screen flex items-center justify-center md:sticky top-0 mb-8 md:mb-0 px-4 md:px-0">
-      <motion.div 
-        style={{ 
-          scale, 
-          opacity, 
-          top: `calc(-5vh + ${index * 25}px)` // Creates a layered stack effect
-        }}
-        className="relative w-full max-w-7xl h-full md:h-[85vh] mx-auto rounded-[2rem] md:rounded-[3rem] overflow-hidden transform-origin-top shadow-2xl bg-[#0a0a0a] border border-white/10"
-      >
-        {/* Background Image with Parallax */}
+    <>
+      {/* Desktop Sticky Stack View */}
+      <div ref={containerRef} className="hidden md:flex h-screen items-center justify-center sticky top-0">
         <motion.div 
-          style={{ scale: imageScale }}
-          className="absolute inset-0 w-full h-full"
+          style={{ 
+            scale, 
+            opacity, 
+            top: `calc(-5vh + ${index * 25}px)` 
+          }}
+          className="relative w-full max-w-7xl h-[85vh] mx-auto rounded-[3rem] overflow-hidden transform-origin-top shadow-2xl bg-[#0a0a0a] border border-white/10"
         >
-          {project.imageUrl ? (
-            <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
-          ) : (
-            <div className="w-full h-full bg-[#111] flex items-center justify-center">
-              <span className="text-white/20 font-bold text-2xl">No Image</span>
+          {/* Background Image with Parallax */}
+          <motion.div 
+            style={{ scale: imageScale }}
+            className="absolute inset-0 w-full h-full"
+          >
+            {project.imageUrl ? (
+              <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full bg-[#111] flex items-center justify-center">
+                <span className="text-white/20 font-bold text-2xl">No Image</span>
+              </div>
+            )}
+          </motion.div>
+
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0514]/80 via-transparent to-transparent pointer-events-none" />
+
+          {/* Card Content */}
+          <div className="absolute inset-0 p-12 lg:p-16 flex flex-col justify-between z-10 pointer-events-none">
+            <div className="flex justify-between items-start">
+              <div className="bg-black/50 backdrop-blur-xl border border-white/20 px-6 py-2.5 rounded-full pointer-events-auto hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer">
+                <span className="text-xs font-semibold uppercase tracking-widest text-inherit">
+                  {project.tag || "Case Study"}
+                </span>
+              </div>
             </div>
-          )}
-        </motion.div>
 
-        {/* Cinematic Gradient Overlays to ensure text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0514]/80 via-transparent to-transparent pointer-events-none" />
-
-        {/* Card Content */}
-        <div className="absolute inset-0 p-8 md:p-12 lg:p-16 flex flex-col justify-between z-10 pointer-events-none">
-          {/* Top Row: Tag */}
-          <div className="flex justify-between items-start">
-            <div className="bg-black/50 backdrop-blur-xl border border-white/20 px-6 py-2.5 rounded-full pointer-events-auto hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer">
-              <span className="text-xs font-semibold uppercase tracking-widest text-inherit">
-                {project.tag || "Case Study"}
-              </span>
+            <div className="flex flex-row items-end justify-between gap-8 pointer-events-auto w-full">
+              <div className="max-w-3xl">
+                <span className="text-sm font-semibold text-white/60 block mb-4 tracking-wider uppercase">{project.description}</span>
+                <h3 className="text-7xl lg:text-8xl font-sans font-bold text-white tracking-tighter leading-[0.9]">
+                  {project.title}
+                </h3>
+              </div>
+              
+              <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="group bg-white text-black px-8 py-4 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors shrink-0 w-max flex items-center gap-2">
+                Explore Project <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+              </a>
             </div>
           </div>
+        </motion.div>
+      </div>
 
-          {/* Bottom Row: Title and Description */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 pointer-events-auto w-full">
-            <div className="max-w-3xl">
-              <span className="text-sm font-semibold text-white/60 block mb-4 tracking-wider uppercase">{project.description}</span>
-              <h3 className="text-5xl md:text-7xl lg:text-8xl font-sans font-bold text-white tracking-tighter leading-[0.9]">
-                {project.title}
-              </h3>
+      {/* Mobile Normal List View */}
+      <div className="md:hidden flex h-[60vh] w-full px-4 mb-8">
+        <div className="relative w-full h-full mx-auto rounded-[2rem] overflow-hidden shadow-2xl bg-[#0a0a0a] border border-white/10">
+          <div className="absolute inset-0 w-full h-full">
+            {project.imageUrl ? (
+              <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full bg-[#111] flex items-center justify-center">
+                <span className="text-white/20 font-bold text-2xl">No Image</span>
+              </div>
+            )}
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/90 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a0514]/80 via-transparent to-transparent pointer-events-none" />
+
+          <div className="absolute inset-0 p-6 flex flex-col justify-between z-10">
+            <div className="flex justify-between items-start">
+              <div className="bg-black/50 backdrop-blur-xl border border-white/20 px-4 py-2 rounded-full pointer-events-auto">
+                <span className="text-[10px] font-semibold uppercase tracking-widest text-white">
+                  {project.tag || "Case Study"}
+                </span>
+              </div>
             </div>
-            
-            <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="group bg-white text-black px-8 py-4 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors shrink-0 w-max flex items-center gap-2">
-              Explore Project <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-            </a>
+
+            <div className="flex flex-col gap-6 pointer-events-auto w-full">
+              <div>
+                <span className="text-xs font-semibold text-white/60 block mb-2 tracking-wider uppercase line-clamp-1">{project.description}</span>
+                <h3 className="text-4xl font-sans font-bold text-white tracking-tighter leading-none line-clamp-2">
+                  {project.title}
+                </h3>
+              </div>
+              
+              <a href={project.link || "#"} target="_blank" rel="noopener noreferrer" className="bg-white text-black px-6 py-3 rounded-full font-bold text-sm hover:bg-gray-200 transition-colors shrink-0 w-max flex items-center gap-2">
+                Explore Project <ArrowUpRight size={16} />
+              </a>
+            </div>
           </div>
         </div>
-      </motion.div>
-    </div>
+      </div>
+    </>
   );
 };
 
