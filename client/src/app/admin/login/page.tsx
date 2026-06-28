@@ -43,8 +43,8 @@ export default function AdminLogin() {
     <div className="min-h-screen flex items-center justify-center bg-[#0a0a0a] px-4 relative overflow-hidden absolute inset-0 z-50">
       
       {/* Background Animated Blobs */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-purple-600/20 rounded-full mix-blend-screen filter blur-[120px] opacity-70 animate-blob pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-600/20 rounded-full mix-blend-screen filter blur-[120px] opacity-70 animate-blob animation-delay-2000 pointer-events-none" />
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#a855f7]/15 rounded-full mix-blend-screen filter blur-[120px] opacity-70 animate-blob pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#d946ef]/15 rounded-full mix-blend-screen filter blur-[120px] opacity-70 animate-blob animation-delay-2000 pointer-events-none" />
 
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
@@ -62,7 +62,7 @@ export default function AdminLogin() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="w-16 h-16 bg-gradient-to-tr from-purple-500 to-blue-500 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-purple-500/20"
+              className="w-16 h-16 bg-gradient-to-tr from-[#a855f7] to-[#d946ef] rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-[#a855f7]/20"
             >
               <Lock className="text-white w-8 h-8" />
             </motion.div>
@@ -132,7 +132,7 @@ export default function AdminLogin() {
               whileTap={{ scale: 0.98 }}
               type="submit" 
               disabled={loading}
-              className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-400 hover:to-blue-400 text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 mt-8 disabled:opacity-70 disabled:cursor-not-allowed group"
+              className="w-full bg-gradient-to-r from-[#a855f7] to-[#d946ef] hover:opacity-90 text-white font-semibold py-4 rounded-xl transition-all shadow-lg shadow-[#a855f7]/25 flex items-center justify-center gap-2 mt-8 disabled:opacity-70 disabled:cursor-not-allowed group"
             >
               {loading ? (
                 "Signing in..."
