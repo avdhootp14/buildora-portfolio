@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
     const projects = await Project.find().sort({ sortOrder: 1, updatedAt: -1 });
     res.json(projects);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -26,7 +26,7 @@ router.post('/', auth, upload.single('image'), async (req, res) => {
     res.json(project);
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -36,7 +36,7 @@ router.delete('/:id', auth, async (req, res) => {
     await Project.findByIdAndDelete(req.params.id);
     res.json({ message: 'Project removed' });
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -55,7 +55,7 @@ router.put('/:id', auth, upload.single('image'), async (req, res) => {
     res.json(updatedProject);
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

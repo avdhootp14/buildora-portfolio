@@ -14,7 +14,7 @@ router.get('/me', auth, async (req, res) => {
     res.json(user);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -79,7 +79,7 @@ router.post('/invite', auth, authLimiter, async (req, res) => {
     }
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -101,7 +101,7 @@ router.post('/setup-account/:token', async (req, res) => {
     res.json({ message: 'Account setup successfully. You can now log in.' });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -130,7 +130,7 @@ router.post('/login', authLimiter, async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -177,7 +177,7 @@ router.post('/forgot-password', authLimiter, async (req, res) => {
     }
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -201,7 +201,7 @@ router.post('/reset-password/:token', async (req, res) => {
     res.json({ message: 'Password reset successful. You can now log in.' });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

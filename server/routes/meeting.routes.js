@@ -10,7 +10,7 @@ router.post('/', async (req, res) => {
     const meeting = await newMeeting.save();
     res.json(meeting);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -20,7 +20,7 @@ router.get('/', auth, async (req, res) => {
     const meetings = await Meeting.find().sort({ date: 1 });
     res.json(meetings);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -30,7 +30,7 @@ router.put('/:id', auth, async (req, res) => {
     const meeting = await Meeting.findByIdAndUpdate(req.params.id, { status: req.body.status }, { new: true });
     res.json(meeting);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

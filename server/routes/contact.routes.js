@@ -105,7 +105,7 @@ router.post('/', contactLimiter, async (req, res) => {
     res.json(contact);
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -115,7 +115,7 @@ router.get('/', auth, async (req, res) => {
     const contacts = await Contact.find().sort({ createdAt: -1 });
     res.json(contacts);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -125,7 +125,7 @@ router.put('/:id', auth, async (req, res) => {
     const contact = await Contact.findByIdAndUpdate(req.params.id, { isRead: true }, { new: true });
     res.json(contact);
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -135,7 +135,7 @@ router.delete('/:id', auth, async (req, res) => {
     await Contact.findByIdAndDelete(req.params.id);
     res.json({ message: 'Contact removed' });
   } catch (err) {
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -200,7 +200,7 @@ router.post('/:id/reply', auth, async (req, res) => {
     res.json({ message: 'Reply sent successfully', contact });
   } catch (err) {
     console.error('Error sending reply:', err);
-    res.status(500).send('Server Error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

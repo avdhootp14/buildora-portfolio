@@ -11,7 +11,7 @@ router.get('/', auth, async (req, res) => {
     res.json(admins);
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -43,7 +43,7 @@ router.delete('/:id', auth, async (req, res) => {
     res.json({ message: 'Admin removed successfully' });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
@@ -76,7 +76,7 @@ router.put('/:id/role', auth, async (req, res) => {
     res.json({ message: 'Role updated successfully', user: { _id: targetUser._id, role: targetUser.role } });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).json({ message: 'Server error' });
   }
 });
 
